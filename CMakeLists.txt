@@ -15,9 +15,9 @@ project(aff3ct)
 # ------------------------------------------------------------------------------------------------------- CMAKE OPTIONS
 # ---------------------------------------------------------------------------------------------------------------------
 
-option(AFF3CT_COMPILE_EXE        "Compile the executable"                                                   ON )
-option(AFF3CT_COMPILE_STATIC_LIB "Compile the static library"                                               OFF)
-option(AFF3CT_COMPILE_SHARED_LIB "Compile the shared library"                                               OFF)
+option(AFF3CT_COMPILE_EXE        "Compile the executable"                                                   OFF )
+option(AFF3CT_COMPILE_STATIC_LIB "Compile the static library"                                               ON)
+option(AFF3CT_COMPILE_SHARED_LIB "Compile the shared library"                                               ON)
 option(AFF3CT_LINK_GSL           "Link with the GSL library (used in the channels)"                         OFF)
 option(AFF3CT_LINK_MKL           "Link with the MKL library (used in the channels)"                         OFF)
 option(AFF3CT_LINK_HWLOC         "Link with the hwloc library (used for threads pinning)"                   OFF)
@@ -47,6 +47,8 @@ endif()
 
 if(MSVC)
     set(AFF3CT_EXT_STRINGS ON)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+    add_compile_options(-D_CRT_SECURE_NO_DEPRECATE /EHsc /MP4)
 else()
     option(AFF3CT_EXT_STRINGS "Enable external strings for the help documentation" ON)
 endif()

@@ -6,8 +6,8 @@
 using namespace aff3ct::tools;
 
 RS_polynomial_generator
-::RS_polynomial_generator(const int& N, const int& t)
- : Galois<int>(N), t(t), d(2 * t + 1), g(d, 0)
+::RS_polynomial_generator(const int& N, const int& t,const std::vector<int> p,int iniroot)
+ : Galois<int>(N,p), t(t), d(2 * t + 1), g(d, 0),m_iniroot(iniroot)
 {
 	if (t < 1)
 	{
@@ -123,7 +123,8 @@ void RS_polynomial_generator
 
 
 	/* Compute the generator polynomial */
-	auto init_root = zeros[1];
+	//auto init_root = zeros[1];  //default initroot is alpha
+	auto init_root = m_iniroot;
 	g[0] = alpha_to[init_root];
 	g[1] = 1; /* g(x) = (X + zeros[1]) initially */
 	for (auto i = 2; i < (int)g.size(); i++)

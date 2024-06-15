@@ -15,7 +15,7 @@ project(aff3ct)
 # ------------------------------------------------------------------------------------------------------- CMAKE OPTIONS
 # ---------------------------------------------------------------------------------------------------------------------
 
-option(AFF3CT_COMPILE_EXE        "Compile the executable"                                                   OFF )
+option(AFF3CT_COMPILE_EXE        "Compile the executable"                                                   ON)
 option(AFF3CT_COMPILE_STATIC_LIB "Compile the static library"                                               ON)
 option(AFF3CT_COMPILE_SHARED_LIB "Compile the shared library"                                               ON)
 option(AFF3CT_LINK_GSL           "Link with the GSL library (used in the channels)"                         OFF)
